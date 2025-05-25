@@ -6,7 +6,8 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
-  String rutaImagen = "assets/images/dice1.png";
+  // String rutaImagen = "assets/images/dice1.png";
+  int dadoN = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +40,47 @@ class _DicePageState extends State<DicePage> {
                 // BoxShape
                 // .circle, //convvierte el container en un circulo perfecto
               ),
-              child: Image.asset(rutaImagen, width: 300, height: 300),
+              child: Image.asset(
+                "assets/images/dice$dadoN.png",
+                width: 300,
+                height: 300,
+              ),
             ),
             SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                rutaImagen = "assets/images/dice6.png";
-                setState(() {});
-              },
-              child: Text("Cambiar a dado 6"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                  color: Colors.purple,
+                  style: IconButton.styleFrom(
+                    backgroundColor: Color(0xffF7F2FA),
+                  ),
+                  onPressed: () {
+                    dadoN -= 1;
+                    setState(() {});
+                  },
+                  icon: Icon(Icons.arrow_left_outlined),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // rutaImagen = "assets/images/dice6.png";
+                    dadoN = 6;
+                    setState(() {});
+                  },
+                  child: Text("Cambiar a dado 6"),
+                ),
+                IconButton(
+                  color: Colors.purple,
+                  style: IconButton.styleFrom(
+                    backgroundColor: Color(0xffF7F2FA),
+                  ),
+                  onPressed: () {
+                    dadoN += 1;
+                    setState(() {});
+                  },
+                  icon: Icon(Icons.arrow_right),
+                ),
+              ],
             ),
           ],
         ),
