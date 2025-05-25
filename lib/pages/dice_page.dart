@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  @override
+  State<DicePage> createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  String rutaImagen = "assets/images/dice1.png";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +39,15 @@ class DicePage extends StatelessWidget {
                 // BoxShape
                 // .circle, //convvierte el container en un circulo perfecto
               ),
-              child: Image.asset(
-                "assets/images/dice1.png",
-                width: 300,
-                height: 300,
-              ),
+              child: Image.asset(rutaImagen, width: 300, height: 300),
+            ),
+            SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: () {
+                rutaImagen = "assets/images/dice6.png";
+                setState(() {});
+              },
+              child: Text("Cambiar a dado 6"),
             ),
           ],
         ),
