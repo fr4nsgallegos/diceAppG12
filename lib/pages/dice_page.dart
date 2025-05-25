@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class DicePage extends StatefulWidget {
@@ -8,6 +10,11 @@ class DicePage extends StatefulWidget {
 class _DicePageState extends State<DicePage> {
   // String rutaImagen = "assets/images/dice1.png";
   int dadoN = 1;
+
+  void shuffleDado() {
+    dadoN = Random().nextInt(6) + 1;
+    print(dadoN);
+  }
 
   void sumarDado() {
     dadoN = dadoN == 6 ? 1 : dadoN += 1;
@@ -84,7 +91,13 @@ class _DicePageState extends State<DicePage> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // rutaImagen = "assets/images/dice6.png";
+                    shuffleDado();
+                    setState(() {});
+                  },
+                  child: Text("Shuffle"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
                     dadoN = 6;
                     setState(() {});
                   },
