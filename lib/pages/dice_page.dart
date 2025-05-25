@@ -9,6 +9,28 @@ class _DicePageState extends State<DicePage> {
   // String rutaImagen = "assets/images/dice1.png";
   int dadoN = 1;
 
+  void sumarDado() {
+    dadoN = dadoN == 6 ? 1 : dadoN += 1;
+
+    // if (dadoN == 6) {
+    //   dadoN = 1;
+    // } else {
+    //   dadoN += 1;
+    // }
+    setState(() {});
+  }
+
+  void restarDado() {
+    dadoN = dadoN == 1 ? 6 : dadoN -= 1;
+
+    // if (dadoN == 1) {
+    //   dadoN = 6;
+    // } else {
+    //   dadoN -= 1;
+    // }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,8 +78,7 @@ class _DicePageState extends State<DicePage> {
                     backgroundColor: Color(0xffF7F2FA),
                   ),
                   onPressed: () {
-                    dadoN -= 1;
-                    setState(() {});
+                    restarDado();
                   },
                   icon: Icon(Icons.arrow_left_outlined),
                 ),
@@ -75,8 +96,7 @@ class _DicePageState extends State<DicePage> {
                     backgroundColor: Color(0xffF7F2FA),
                   ),
                   onPressed: () {
-                    dadoN += 1;
-                    setState(() {});
+                    sumarDado();
                   },
                   icon: Icon(Icons.arrow_right),
                 ),
